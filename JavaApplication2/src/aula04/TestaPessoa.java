@@ -4,7 +4,7 @@ package aula04;
  *
  * @author vitoria.schneider
  */
-public class testCliente {
+public class TestaPessoa {
     
     public static void main(String[] args) {
         
