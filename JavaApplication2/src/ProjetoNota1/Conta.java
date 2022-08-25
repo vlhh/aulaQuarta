@@ -8,21 +8,21 @@ package ProjetoNota1;
  *
  * @author vitor
  */
-public class Cliente {
+public class Conta {
     
     private String titular;
     private int numConta;
     private double saldoConta;
     private double limitCheque;
 
-    public Cliente(String titular, int numConta, double saldoConta, double limitCheque) {
+    public Conta(String titular, int numConta, double saldoConta, double limitCheque) {
         this.titular = titular;
         this.numConta = numConta;
         this.saldoConta = saldoConta;
         this.limitCheque = limitCheque;
     }
     
-    public Cliente() {
+    public Conta() {
     }
 
     public String getTitular() {
@@ -62,7 +62,27 @@ public class Cliente {
         return "Cliente{" + "titular=" + titular + ", numConta=" + numConta + ", saldoConta=" + saldoConta + ", limitCheque=" + limitCheque + '}';
     }
     
+    public void depositar(double valor){
+        this.saldoConta +=valor;
+    }
     
+    public boolean sacar(double valor){
+        if(this.saldoConta>=valor){
+            this.saldoConta -=valor;
+            return true;
+        }else{
+            return false;
+        }
+    }
     
+    public boolean transferir(double valorTranferencia, Conta objContaDestino){
+        if(this.sacar(valorTranferencia)){
+            objContaDestino.depositar(valorTranferencia);
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
     
 }
