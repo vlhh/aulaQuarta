@@ -26,32 +26,39 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                      <Component id="bntAlterarNome" min="-2" pref="126" max="-2" attributes="0"/>
+                      <Component id="lblNomeConta1" min="-2" pref="171" max="-2" attributes="0"/>
+                      <EmptySpace pref="137" max="32767" attributes="0"/>
+                      <Component id="lblNomeConta2" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNomeConta1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblSaldo" max="32767" attributes="0"/>
-                                  <Component id="lblNumero" pref="98" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnSacar1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnSacar2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNomeConta2" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="lblSaldo2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblNumero2" alignment="0" pref="98" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblNumero" pref="127" max="32767" attributes="0"/>
+                                  <Component id="lblSaldo" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="150" pref="150" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNumero2" max="32767" attributes="0"/>
+                                  <Component id="lblSaldo2" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+              <Component id="bntAlterarNome" min="-2" pref="126" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,9 +66,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lblNomeConta1" pref="54" max="32767" attributes="0"/>
-                  <Component id="lblNomeConta2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNomeConta1" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                  <Component id="lblNomeConta2" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -69,11 +76,16 @@
                   <Component id="lblNumero2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lblSaldo" pref="27" max="32767" attributes="0"/>
-                  <Component id="lblSaldo2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblSaldo" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="lblSaldo2" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="109" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSacar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSacar2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="68" max="32767" attributes="0"/>
               <Component id="bntAlterarNome" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -133,6 +145,16 @@
     <Component class="javax.swing.JLabel" name="lblSaldo2">
       <Properties>
         <Property name="text" type="java.lang.String" value="saldo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSacar1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSacar2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
   </SubComponents>
