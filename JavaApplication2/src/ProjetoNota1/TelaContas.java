@@ -17,25 +17,26 @@ public class TelaContas extends javax.swing.JFrame {
     
     Conta objetoConta;
     
+    
     public TelaContas() {
         initComponents();
         
-        Conta objetoConta = new Conta("Viória",13123123,2000,213123);        
-        System.out.println("saldo na conta: " +objetoConta.getSaldoConta());
+        Conta objetoConta1 = new Conta("Viória",13123123,2000,213123);        
+        System.out.println("saldo na conta: " +objetoConta1.getSaldoConta());
         
         Conta objetoConta2 = new Conta("Viória2",82347234,800,234234);        
         System.out.println("saldo na conta: "+ objetoConta2.getSaldoConta());
         
         
         //prencheer os campos na tela
-        lblNomeConta1.setText("nome: " + objetoConta.getTitular());
-        lblNomeConta2.setText("nome: " + objetoConta2.getTitular());
+        lblNomeConta1.setText("Titular : " + objetoConta1.getTitular());
+        lblNomeConta2.setText("Titular : " + objetoConta2.getTitular());
         
-        lblNumero.setText("num : " +objetoConta.getNumConta());
-        lblNumero2.setText("num : " +objetoConta2.getNumConta());
+        lblNumero.setText("Número Conta : " +objetoConta1.getNumConta());
+        lblNumero2.setText("Número Conta : " +objetoConta2.getNumConta());
         
-        lblSaldo.setText("saldo :" +objetoConta.getSaldoConta());
-        lblSaldo2.setText("saldo :" +objetoConta2.getSaldoConta());
+        lblSaldo.setText("Saldo : " +objetoConta1.getSaldoConta());
+        lblSaldo2.setText("Saldo : " +objetoConta2.getSaldoConta());
         
     }
 
@@ -48,109 +49,132 @@ public class TelaContas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bntAlterarNome = new javax.swing.JButton();
         lblNomeConta1 = new javax.swing.JLabel();
         lblNomeConta2 = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
         lblNumero2 = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         lblSaldo2 = new javax.swing.JLabel();
-        btnSacar1 = new javax.swing.JButton();
-        btnSacar2 = new javax.swing.JButton();
+        btnSacar = new javax.swing.JButton();
+        btnDepositar = new javax.swing.JButton();
+        btnTransferir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bntAlterarNome.setBackground(new java.awt.Color(240, 165, 240));
-        bntAlterarNome.setForeground(new java.awt.Color(0, 123, 65));
-        bntAlterarNome.setText("botao");
-        bntAlterarNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        bntAlterarNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntAlterarNomeActionPerformed(evt);
-            }
-        });
 
         lblNomeConta1.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
         lblNomeConta1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNomeConta1.setText("conta1");
 
         lblNomeConta2.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
+        lblNomeConta2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNomeConta2.setText("conta2");
 
-        lblNumero.setText("número conta");
+        lblNumero.setText("número conta:");
 
-        lblNumero2.setText("número conta");
+        lblNumero2.setText("número conta:");
 
         lblSaldo.setText("saldo");
 
         lblSaldo2.setText("saldo");
 
-        btnSacar1.setText("jButton1");
+        btnSacar.setText("sacar");
+        btnSacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSacarActionPerformed(evt);
+            }
+        });
 
-        btnSacar2.setText("jButton1");
+        btnDepositar.setText("depositar");
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
+
+        btnTransferir.setText("transferir");
+        btnTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNomeConta1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                        .addComponent(lblNomeConta2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSacar1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSacar2)
-                                .addGap(77, 77, 77))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                    .addComponent(lblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(150, 150, 150)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addGap(147, 147, 147))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(bntAlterarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblNumero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                .addComponent(lblNomeConta1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblNumero2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .addComponent(lblNomeConta2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeConta1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblNomeConta1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                     .addComponent(lblNomeConta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSacar1)
-                    .addComponent(btnSacar2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(bntAlterarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(lblNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntAlterarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAlterarNomeActionPerformed
-        lblNomeConta1.setText("saldo");
-    }//GEN-LAST:event_bntAlterarNomeActionPerformed
+    private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
+        
+        //lblSaldo2.setText(objetoConta.sacar(400));
+        
+        
+        //String str = Double.toString(400);
+        //lbl //String str = Double.toString(400);
+        //lblSaldo2.setText(objetoConta.sacar(400));
+        //Saldo2.setText(objetoConta.sacar(400));
+        
+    }//GEN-LAST:event_btnSacarActionPerformed
+
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        
+        //objetoConta.depositar(100);
+        
+       lblSaldo.setText("Saldo : 400");
+        //lblSaldo.setText(objetoConta.transferir(1000, objetoConta2));
+    }//GEN-LAST:event_btnDepositarActionPerformed
+
+    private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
+
+        
+        //lblSaldo.setText(objetoConta.transferir(1000, objetoConta));
+    }//GEN-LAST:event_btnTransferirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,9 +212,9 @@ public class TelaContas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntAlterarNome;
-    private javax.swing.JButton btnSacar1;
-    private javax.swing.JButton btnSacar2;
+    private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnSacar;
+    private javax.swing.JButton btnTransferir;
     private javax.swing.JLabel lblNomeConta1;
     private javax.swing.JLabel lblNomeConta2;
     private javax.swing.JLabel lblNumero;

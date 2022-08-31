@@ -67,6 +67,7 @@ public class Conta {
     }
     
     public boolean sacar(double valor){
+        
         if(this.saldoConta>=valor){
             this.saldoConta -=valor;
             return true;
@@ -76,6 +77,7 @@ public class Conta {
     }
     
     public boolean transferir(double valorTranferencia, Conta objContaDestino){
+        
         if(this.sacar(valorTranferencia)){
             objContaDestino.depositar(valorTranferencia);
             return true;
@@ -84,5 +86,5 @@ public class Conta {
         }
         
     }
-    
+
 }
