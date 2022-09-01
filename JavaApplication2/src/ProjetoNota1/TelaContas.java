@@ -5,39 +5,45 @@
  */
 package ProjetoNota1;
 
+import tools.CaixaDeDialogo;
+
 /**
  *
  * @author vitoria.schneider
  */
 public class TelaContas extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaContas
-     */
     
     Conta objetoConta;
+    Conta objetoConta2;
     
     
     public TelaContas() {
         initComponents();
         
-        Conta objetoConta1 = new Conta("Viória",13123123,2000,213123);        
-        System.out.println("saldo na conta: " +objetoConta1.getSaldoConta());
+        objetoConta = new Conta("Vitória",13123123,5000,213123);        
+        System.out.println("saldo na conta: " +objetoConta.getSaldoConta());
         
-        Conta objetoConta2 = new Conta("Viória2",82347234,800,234234);        
+        objetoConta2 = new Conta("Vitória2",82347234,800,234234);        
         System.out.println("saldo na conta: "+ objetoConta2.getSaldoConta());
         
         
         //prencheer os campos na tela
-        lblNomeConta1.setText("Titular : " + objetoConta1.getTitular());
+        lblNomeConta1.setText("Titular : " + objetoConta.getTitular());
         lblNomeConta2.setText("Titular : " + objetoConta2.getTitular());
         
-        lblNumero.setText("Número Conta : " +objetoConta1.getNumConta());
+        lblNumero.setText("Número Conta : " +objetoConta.getNumConta());
         lblNumero2.setText("Número Conta : " +objetoConta2.getNumConta());
         
-        lblSaldo.setText("Saldo : " +objetoConta1.getSaldoConta());
+        lblSaldo.setText("Saldo : " +objetoConta.getSaldoConta());
         lblSaldo2.setText("Saldo : " +objetoConta2.getSaldoConta());
         
+        lblChequeEspecial.setText("cheque especial " +objetoConta.getLimitCheque());
+        
+    }
+    
+    private void atulizarSaldos(){
+        lblSaldo.setText("Saldo : " +objetoConta.getSaldoConta());
+        lblSaldo2.setText("Saldo : " +objetoConta2.getSaldoConta());
     }
 
     /**
@@ -58,16 +64,22 @@ public class TelaContas extends javax.swing.JFrame {
         btnSacar = new javax.swing.JButton();
         btnDepositar = new javax.swing.JButton();
         btnTransferir = new javax.swing.JButton();
+        TxtConta1 = new javax.swing.JTextField();
+        TxtConta2 = new javax.swing.JTextField();
+        btnSacar2 = new javax.swing.JButton();
+        btnDepositar2 = new javax.swing.JButton();
+        btnTransferir2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblChequeEspecial = new javax.swing.JLabel();
+        lblChequeEspecial2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblNomeConta1.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
-        lblNomeConta1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeConta1.setText("conta1");
+        lblNomeConta1.setText("CONTA 1");
 
         lblNomeConta2.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
-        lblNomeConta2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeConta2.setText("conta2");
+        lblNomeConta2.setText("CONTA 2");
 
         lblNumero.setText("número conta:");
 
@@ -98,53 +110,116 @@ public class TelaContas extends javax.swing.JFrame {
             }
         });
 
+        TxtConta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtConta1ActionPerformed(evt);
+            }
+        });
+
+        TxtConta2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtConta2ActionPerformed(evt);
+            }
+        });
+
+        btnSacar2.setText("sacar");
+        btnSacar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSacar2ActionPerformed(evt);
+            }
+        });
+
+        btnDepositar2.setText("depositar");
+        btnDepositar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositar2ActionPerformed(evt);
+            }
+        });
+
+        btnTransferir2.setText("transferir");
+        btnTransferir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferir2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo-itau-256.png"))); // NOI18N
+
+        lblChequeEspecial.setText("cheque especial");
+
+        lblChequeEspecial2.setText("cheque especial");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblNumero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                .addComponent(lblNomeConta1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblNumero2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                            .addComponent(lblNomeConta2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(263, 263, 263)
+                .addComponent(jLabel1)
+                .addGap(63, 284, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblChequeEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TxtConta1)
+                    .addComponent(btnDepositar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNumero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(lblNomeConta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSacar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTransferir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(244, 244, 244)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                    .addComponent(lblNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                    .addComponent(TxtConta2)
+                    .addComponent(btnSacar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDepositar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTransferir2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeConta2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                    .addComponent(lblChequeEspecial2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblNomeConta1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                    .addComponent(lblNomeConta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomeConta2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeConta1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSaldo2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblChequeEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(lblChequeEspecial2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TxtConta2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtConta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSacar)
+                        .addGap(68, 68, 68))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDepositar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTransferir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSacar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDepositar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTransferir2))))
         );
 
         pack();
@@ -152,29 +227,95 @@ public class TelaContas extends javax.swing.JFrame {
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
         
-        //lblSaldo2.setText(objetoConta.sacar(400));
+        try{
+            boolean resposta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("deseja mesmo sacar?", "confirmacao", 'p');
+            if(resposta ==true){
+            Double valorSaque =Double.parseDouble(TxtConta1.getText());
         
+            if(objetoConta.sacar(valorSaque)){
+            atulizarSaldos();
+            }else{
+                CaixaDeDialogo.obterinstancia().exibirMensagem("saldo insuficiente", 'e');
+            }
+        }else{
+                CaixaDeDialogo.obterinstancia().exibirMensagem("NAO", 'e');
+            }
         
-        //String str = Double.toString(400);
-        //lbl //String str = Double.toString(400);
-        //lblSaldo2.setText(objetoConta.sacar(400));
-        //Saldo2.setText(objetoConta.sacar(400));
+        }catch(Exception ex){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
+                }
         
     }//GEN-LAST:event_btnSacarActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        try{
+        Double valorDeposito = Double.parseDouble(TxtConta1.getText());
+        objetoConta.depositar(valorDeposito);
+        atulizarSaldos();
+        }catch(Exception ex){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
+                }
         
-        //objetoConta.depositar(100);
-        
-       lblSaldo.setText("Saldo : 400");
-        //lblSaldo.setText(objetoConta.transferir(1000, objetoConta2));
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
+        try{
+        Double valorTransferencia = Double.parseDouble(TxtConta1.getText());
 
+        objetoConta.transferir(valorTransferencia, objetoConta2);
+        atulizarSaldos();
         
-        //lblSaldo.setText(objetoConta.transferir(1000, objetoConta));
+        }catch(Exception ex){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
+                }
     }//GEN-LAST:event_btnTransferirActionPerformed
+
+    private void TxtConta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtConta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtConta1ActionPerformed
+
+    private void TxtConta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtConta2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtConta2ActionPerformed
+
+    private void btnSacar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacar2ActionPerformed
+        try{
+            
+        Double valorSaque =Double.parseDouble(TxtConta2.getText());
+        
+        if(objetoConta2.sacar(valorSaque)){
+            atulizarSaldos();
+        }else{
+
+        }
+        }catch(Exception ex){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
+                }
+    }//GEN-LAST:event_btnSacar2ActionPerformed
+
+    private void btnDepositar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar2ActionPerformed
+       try{
+        Double valorDeposito = Double.parseDouble(TxtConta2.getText());
+        objetoConta2.depositar(valorDeposito);
+        atulizarSaldos();
+        
+       }catch(Exception ex){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
+                }
+       
+    }//GEN-LAST:event_btnDepositar2ActionPerformed
+
+    private void btnTransferir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferir2ActionPerformed
+        try{
+        Double valorTransferencia = Double.parseDouble(TxtConta2.getText());
+
+        objetoConta2.transferir(valorTransferencia, objetoConta);
+        atulizarSaldos();
+        
+        }catch(Exception ex){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
+                }
+    }//GEN-LAST:event_btnTransferir2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,9 +353,17 @@ public class TelaContas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TxtConta1;
+    private javax.swing.JTextField TxtConta2;
     private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnDepositar2;
     private javax.swing.JButton btnSacar;
+    private javax.swing.JButton btnSacar2;
     private javax.swing.JButton btnTransferir;
+    private javax.swing.JButton btnTransferir2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblChequeEspecial;
+    private javax.swing.JLabel lblChequeEspecial2;
     private javax.swing.JLabel lblNomeConta1;
     private javax.swing.JLabel lblNomeConta2;
     private javax.swing.JLabel lblNumero;
