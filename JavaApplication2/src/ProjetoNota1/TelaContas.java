@@ -5,6 +5,9 @@
  */
 package ProjetoNota1;
 
+
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import tools.CaixaDeDialogo;
 
 /**
@@ -15,35 +18,51 @@ public class TelaContas extends javax.swing.JFrame {
     
     Conta objetoConta;
     Conta objetoConta2;
+    DefaultComboBoxModel modelConta;
+    ArrayList<Conta> listaContas;
     
     
     public TelaContas() {
         initComponents();
         
-        objetoConta = new Conta("Vitória",13123123,5000,213123);        
-        System.out.println("saldo na conta: " +objetoConta.getSaldoConta());
+        ArrayList<Conta> listaContas = new ArrayList<>();
         
-        objetoConta2 = new Conta("Vitória2",82347234,800,234234);        
-        System.out.println("saldo na conta: "+ objetoConta2.getSaldoConta());
+        Conta objConta = new Conta();
+        objConta.setTitular("vitoria");
+        objConta.setNumConta(111);
+        objConta.setSaldoConta(300);        
+        objConta.setLimitCheque(1000);
         
+        listaContas.add(objConta);
         
-        //prencheer os campos na tela
-        lblNomeConta1.setText("Titular : " + objetoConta.getTitular());
-        lblNomeConta2.setText("Titular : " + objetoConta2.getTitular());
+        objConta = new Conta();
+        objConta.setTitular("Leila Lopes");
+        objConta.setNumConta(222);
+        objConta.setSaldoConta(900);
+        objConta.setLimitCheque(2000);
         
-        lblNumero.setText("Número Conta : " +objetoConta.getNumConta());
-        lblNumero2.setText("Número Conta : " +objetoConta2.getNumConta());
+        listaContas.add(objConta);
         
-        lblSaldo.setText("Saldo : " +objetoConta.getSaldoConta());
-        lblSaldo2.setText("Saldo : " +objetoConta2.getSaldoConta());
+        modelConta = new DefaultComboBoxModel();
+        for(Conta objeto: listaContas){
+            modelConta.addElement(objeto);
+        }
+        cmb1.setModel(modelConta);
         
-        lblChequeEspecial.setText("cheque especial " +objetoConta.getLimitCheque());
+        modelConta = new DefaultComboBoxModel();
+        for(Conta objeto: listaContas){
+            modelConta.addElement(objeto);
+        }
+        cmb2.setModel(modelConta);
         
     }
     
     private void atulizarSaldos(){
         lblSaldo.setText("Saldo : " +objetoConta.getSaldoConta());
+        TxtConta1.setText("");
+        
         lblSaldo2.setText("Saldo : " +objetoConta2.getSaldoConta());
+        TxtConta2.setText("");
     }
 
     /**
@@ -72,6 +91,8 @@ public class TelaContas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblChequeEspecial = new javax.swing.JLabel();
         lblChequeEspecial2 = new javax.swing.JLabel();
+        cmb1 = new javax.swing.JComboBox<>();
+        cmb2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,16 +170,30 @@ public class TelaContas extends javax.swing.JFrame {
 
         lblChequeEspecial2.setText("cheque especial");
 
+        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb1ActionPerformed(evt);
+            }
+        });
+
+        cmb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(263, 263, 263)
-                .addComponent(jLabel1)
-                .addGap(63, 284, Short.MAX_VALUE))
+                .addGap(245, 245, 245)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblChequeEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TxtConta1)
@@ -167,17 +202,20 @@ public class TelaContas extends javax.swing.JFrame {
                     .addComponent(lblSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(lblNomeConta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSacar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTransferir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(244, 244, 244)
+                    .addComponent(btnTransferir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(235, 235, 235)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(lblNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(TxtConta2)
-                    .addComponent(btnSacar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDepositar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTransferir2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNomeConta2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(lblChequeEspecial2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnSacar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDepositar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTransferir2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNomeConta2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSaldo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblChequeEspecial2, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(TxtConta2))
                 .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
@@ -189,37 +227,43 @@ public class TelaContas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeConta2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeConta1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cmb2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(cmb1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(lblNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSaldo2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSaldo2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblChequeEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(lblChequeEspecial2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChequeEspecial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblChequeEspecial2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtConta1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtConta2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSacar)
+                    .addComponent(btnSacar2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TxtConta2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtConta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSacar)
-                        .addGap(68, 68, 68))
-                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(btnDepositar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTransferir))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSacar2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDepositar2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTransferir2))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTransferir)
+                    .addComponent(btnTransferir2))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -285,8 +329,6 @@ public class TelaContas extends javax.swing.JFrame {
         
         if(objetoConta2.sacar(valorSaque)){
             atulizarSaldos();
-        }else{
-
         }
         }catch(Exception ex){
                 CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
@@ -316,6 +358,39 @@ public class TelaContas extends javax.swing.JFrame {
                 CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(),'e');
                 }
     }//GEN-LAST:event_btnTransferir2ActionPerformed
+
+    private void cmb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb1ActionPerformed
+        objetoConta = (Conta) cmb1.getSelectedItem();
+        
+        lblNomeConta1.setText("Titular : " + objetoConta.getTitular());
+        
+        lblNumero.setText("Número Conta : " +objetoConta.getNumConta());
+        
+        lblSaldo.setText("Saldo : " +objetoConta.getSaldoConta());
+        
+        lblChequeEspecial.setText("cheque especial " +objetoConta.getLimitCheque());
+        
+        TxtConta1.setText("");
+       
+        
+
+    }//GEN-LAST:event_cmb1ActionPerformed
+
+    private void cmb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb2ActionPerformed
+        objetoConta2 = (Conta) cmb2.getSelectedItem();
+        
+        lblNomeConta2.setText("Titular : " + objetoConta2.getTitular());
+        
+        lblNumero2.setText("Número Conta : " +objetoConta2.getNumConta());
+        
+        lblSaldo2.setText("Saldo : " +objetoConta2.getSaldoConta());
+        
+        lblChequeEspecial2.setText("cheque especial " +objetoConta2.getLimitCheque());
+        
+        TxtConta2.setText("");
+        
+
+    }//GEN-LAST:event_cmb2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,6 +436,8 @@ public class TelaContas extends javax.swing.JFrame {
     private javax.swing.JButton btnSacar2;
     private javax.swing.JButton btnTransferir;
     private javax.swing.JButton btnTransferir2;
+    private javax.swing.JComboBox<String> cmb1;
+    private javax.swing.JComboBox<String> cmb2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblChequeEspecial;
     private javax.swing.JLabel lblChequeEspecial2;

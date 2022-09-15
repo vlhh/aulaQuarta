@@ -24,12 +24,12 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="63" pref="284" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="273" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="lblChequeEspecial" max="32767" attributes="0"/>
                   <Component id="TxtConta1" alignment="1" max="32767" attributes="0"/>
@@ -39,17 +39,21 @@
                   <Component id="lblNomeConta1" alignment="1" max="32767" attributes="0"/>
                   <Component id="btnSacar" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                   <Component id="btnTransferir" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                  <Component id="cmb1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lblSaldo2" pref="176" max="32767" attributes="0"/>
-                  <Component id="lblNumero2" pref="176" max="32767" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="btnSacar2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="btnDepositar2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="btnTransferir2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="lblNomeConta2" min="-2" pref="176" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="cmb2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblNumero2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblSaldo2" max="32767" attributes="0"/>
+                  <Component id="lblChequeEspecial2" pref="185" max="32767" attributes="0"/>
                   <Component id="TxtConta2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnSacar2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="btnDepositar2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="btnTransferir2" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="lblNomeConta2" pref="176" max="32767" attributes="0"/>
-                  <Component id="lblChequeEspecial2" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
           </Group>
@@ -65,45 +69,53 @@
                   <Component id="lblNomeConta2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   <Component id="lblNomeConta1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="cmb2" pref="29" max="32767" attributes="0"/>
+                  <Component id="cmb1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblNumero" pref="37" max="32767" attributes="0"/>
+                  <Component id="lblNumero2" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblNumero2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="lblNumero" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblSaldo2" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="lblSaldo" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblSaldo" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="lblSaldo2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblChequeEspecial" pref="30" max="32767" attributes="0"/>
-                  <Component id="lblChequeEspecial2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblChequeEspecial" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="lblChequeEspecial2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TxtConta2" alignment="1" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="TxtConta1" alignment="1" min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TxtConta1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="TxtConta2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnSacar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="68" pref="68" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSacar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSacar2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                       <Component id="btnDepositar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnTransferir" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="btnSacar2" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnDepositar2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnTransferir2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnTransferir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTransferir2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -219,6 +231,42 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="cheque especial"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmb1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmb2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb2ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

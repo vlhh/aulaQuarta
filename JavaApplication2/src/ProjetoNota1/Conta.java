@@ -14,6 +14,7 @@ public class Conta {
     private int numConta;
     private double saldoConta;
     private double limitCheque;
+    
 
     public Conta(String titular, int numConta, double saldoConta, double limitCheque) {
         this.titular = titular;
@@ -59,7 +60,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Cliente{" + "titular=" + titular + ", numConta=" + numConta + ", saldoConta=" + saldoConta + ", limitCheque=" + limitCheque + '}';
+        return this.numConta + "-" +this.titular;
     }
     
     public void depositar(double valor){
@@ -68,7 +69,7 @@ public class Conta {
     
     public boolean sacar(double valor){
         
-        if(this.saldoConta>=valor){
+        if((this.saldoConta + this.limitCheque)>=valor){
             this.saldoConta -=valor;
             return true;
         }else{
