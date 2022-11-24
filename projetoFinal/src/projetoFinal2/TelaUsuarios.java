@@ -15,15 +15,23 @@ import models.Usuario;
  */
 public class TelaUsuarios extends javax.swing.JFrame {
 
+    Usuario objUsuario;
+    UsuarioController objUsuarioController;
     /**
      * Creates new form TelaUsuarios
      */
     public TelaUsuarios() {
         initComponents();
         
-        UsuarioController controller = new UsuarioController();
-        controller.preencherLista(jtbUsuarios);
         
+        atualizarLista();
+        
+        
+    }
+    
+    private void atualizarLista(){
+        objUsuarioController = new UsuarioController();
+        objUsuarioController.preencherLista(jtbUsuarios);
     }
 
     /**
@@ -205,14 +213,26 @@ public class TelaUsuarios extends javax.swing.JFrame {
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         // INCLUI UM PALESTRANTE NA BASE DE DADOS
         if(validarDados()){
+            
+            objUsuario = new Usuario();
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setTelefone(txtTelefone.getText());
+            objUsuario.setUsuario(txtLogin.getText());
+            objUsuario.setSenha(txtSenha.getText());
 
-            /*objUsuarioController = new UsuarioController();
-            if(objUsuarioController.incluir() == true){
-
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Palestrante incluído com Sucesso ("+ objPalestrante.getId() +")!");
+            objUsuarioController = new UsuarioController();
+                        
+            if(objUsuarioController.verificaExistencia((objUsuario.getUsuario()))){
+                CaixaDeDialogo.obterinstancia().exibirMensagem(" usuario ja cadastrado");
             }else{
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir visitante!");
-            }*/
+                objUsuarioController = new UsuarioController();
+            if(objUsuarioController.incluir(objUsuario) == true){
+                atualizarLista();
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Usuario incluído com Sucesso ("+ objUsuario.getId() +")!");
+            }else{
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir usuario!");
+            }
+            }
 
         }
     }//GEN-LAST:event_btnIncluirActionPerformed
@@ -258,6 +278,8 @@ public class TelaUsuarios extends javax.swing.JFrame {
                 if (objUsuario != null && objUsuario.getId() > 0){
                     txtId.setText(String.valueOf(objUsuario.getId()));
                     txtNome.setText(objUsuario.getNome());
+                    txtLogin.setText(objUsuario.getUsuario());
+                    txtTelefone.setText(objUsuario.getTelefone());
                 }else{
                     CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Usuário no BD!");
                 }

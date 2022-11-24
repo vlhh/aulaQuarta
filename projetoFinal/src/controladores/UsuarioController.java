@@ -103,7 +103,7 @@ public class UsuarioController {
                     objUsuario.setUsuario(rs.getString("usuario"));
                     objUsuario.setSenha(rs.getString("senha"));
                     
-                    objUsuario.setId(rs.getInt("id"));
+                    //objUsuario.setId(rs.getInt("id"));
                     return objUsuario;
                 }
                 
@@ -122,9 +122,50 @@ public class UsuarioController {
 		
     }
     
+    public boolean verificaExistencia(String login)
+    {
+        try {
+            
+            Conexao.abreConexao();
+            ResultSet rs = null;
+            PreparedStatement stmt;
+
+            String wSql = "";
+            wSql = " SELECT * ";
+            wSql += " FROM usuarios ";
+            wSql += " WHERE usuario = ? ";
+
+            try{
+                System.out.println("Vai Executar Conexão em buscar Usuario");
+                stmt = Conexao.con.prepareStatement(wSql);
+                stmt.setString(1, login);
+
+                rs = stmt.executeQuery();
+                
+                if(rs.next()){
+                    return true;
+                }
+                
+            }catch (SQLException ex )
+            {
+                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
+                return false;
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage().toString());
+            return false;
+        }
+        
+        return false;
+		
+    }
+    
     public boolean incluir(Usuario objUsuario){
         
         try {
+
+            
             Conexao.abreConexao();
             PreparedStatement stmt = null;
 
@@ -154,7 +195,6 @@ public class UsuarioController {
         Vector dadosTabela = new Vector();
         cabecalhos.add("Id");
         cabecalhos.add("Nome");
-        cabecalhos.add(" ");
         
         Conexao.abreConexao();
         ResultSet result = null;
@@ -196,7 +236,7 @@ public class UsuarioController {
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             column = jtbUsuarios.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
