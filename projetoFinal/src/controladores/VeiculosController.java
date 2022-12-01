@@ -17,7 +17,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import models.Usuario;
 import models.Veiculo;
 
 /**
@@ -37,11 +36,11 @@ public class VeiculosController {
 
             String wSql = "";
             wSql = " SELECT * ";
-            wSql += " FROM usuarios ";
+            wSql += " FROM veiculos ";
             wSql += " WHERE id = ? ";
 
             try {
-                System.out.println("Vai Executar Conexão em buscar Usuario");
+                System.out.println("Vai Executar Conexão em buscar Veiculos");
                 stmt = Conexao.con.prepareStatement(wSql);
                 stmt.setInt(1, id);
 
@@ -85,7 +84,7 @@ public class VeiculosController {
                 wSql += " AND id <> ? ";
             }
 
-            System.out.println("Vai Executar Conexão em verificaExistencia Usuario");
+            System.out.println("Vai Executar Conexão em verificaExistencia Veiculo");
             stmt = Conexao.con.prepareStatement(wSql);
             stmt.setString(1, objVeiculo.getModelo());   
             if(objVeiculo.getId() > 0){
@@ -216,19 +215,17 @@ public class VeiculosController {
         //return (true);
     }
 
-    public boolean alterar(Usuario objUsuario){
+    public boolean alterar(Veiculo objVeiculo){
         
         Conexao.abreConexao();
         PreparedStatement stmt = null;
         
         try {
-            stmt = Conexao.con.prepareStatement("UPDATE usuarios SET nome=?, usuario=?, senha=md5(?), telefone=?, email=? WHERE id=? ");
-            stmt.setString(1, objUsuario.getNome());
-            stmt.setString(2, objUsuario.getUsuario());
-            stmt.setString(3, objUsuario.getSenha());
-            stmt.setString(4, objUsuario.getTelefone());
-            stmt.setString(5, objUsuario.getEmail());
-            stmt.setInt(6, objUsuario.getId());
+            stmt = Conexao.con.prepareStatement("UPDATE usuarios SET modeo=?, placa=?,ano=? WHERE id=? ");
+            stmt.setString(1, objVeiculo.getModelo());
+            stmt.setString(2, objVeiculo.getPlaca());
+            stmt.setString(3, objVeiculo.getAno());
+            stmt.setInt(4, objVeiculo.getId());
             
             stmt.executeUpdate();
             
@@ -250,7 +247,7 @@ public class VeiculosController {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("DELETE FROM usuarios WHERE id=?");
+            stmt = con.prepareStatement("DELETE FROM veiculos WHERE id=?");
             stmt.setInt(1, id);//1º?
                         
             stmt.executeUpdate();

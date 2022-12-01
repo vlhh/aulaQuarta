@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aula11;
+package atividadeAula26_10;
 
 import controladores.UsuarioController;
 import ferramentas.Conexao;
@@ -64,7 +64,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -99,9 +99,11 @@ public class TelaLogin extends javax.swing.JFrame {
         String pass = txtSenha.getText();
         
         boolean existe = controller.login(user, pass);
-        
+       
         if(existe){
-            CaixaDeDialogo.obterinstancia().exibirMensagem("usurio valido");
+            SegundaTela tela = new SegundaTela();
+            tela.setVisible(true);
+            dispose();
         }else{
             CaixaDeDialogo.obterinstancia().exibirMensagem("usurio invalido");
         }
