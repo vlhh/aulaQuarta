@@ -23,15 +23,72 @@ public class TelaUsuarios extends javax.swing.JFrame {
     public TelaUsuarios() {
         initComponents();
         
-        
-        atualizarLista();
-        
+        limparCampos();
         
     }
     
     private void atualizarLista(){
         objUsuarioController = new UsuarioController();
         objUsuarioController.preencherLista(jtbUsuarios);
+    }
+    
+    private void preencherCampos(){
+        try{
+            
+            txtId.setText(String.valueOf(objUsuario.getId()));
+            txtNome.setText(objUsuario.getNome());
+            txtLogin.setText(objUsuario.getUsuario());
+            txtTelefone.setText(objUsuario.getTelefone());
+            txtEmail.setText(objUsuario.getEmail());
+            
+            btnIncluir.setEnabled(false);            
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            txtLogin.setEnabled(false);
+            txtLogin.setEditable(false);
+            
+        }catch(Exception ex){
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
+        }
+    }
+    
+    private void limparCampos(){
+        try{
+            
+            txtId.setText("ID");
+            txtNome.setText("");
+            txtLogin.setText("");
+            txtTelefone.setText("");
+            txtEmail.setText("");
+            txtSenha.setText("");
+            txtConfirmacaoSenha.setText("");
+            
+            btnIncluir.setEnabled(true);            
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            txtLogin.setEnabled(true);
+            txtLogin.setEditable(true);
+            
+            atualizarLista();
+            
+        }catch(Exception ex){
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
+        }
+    }
+    
+    private void guardarDados(){
+        try{
+            
+            objUsuario = new Usuario();
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setTelefone(txtTelefone.getText());
+            objUsuario.setUsuario(txtLogin.getText());
+            objUsuario.setSenha(txtSenha.getText());
+            objUsuario.setEmail(txtEmail.getText());
+            
+        }catch(Exception ex){
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
+        }
     }
 
     /**
@@ -47,12 +104,10 @@ public class TelaUsuarios extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtLogin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtConfirmacaoSenha = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnIncluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -61,6 +116,10 @@ public class TelaUsuarios extends javax.swing.JFrame {
         jtbUsuarios = new javax.swing.JTable();
         btnLimpar = new javax.swing.JButton();
         txtId = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
+        txtConfirmacaoSenha = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -126,6 +185,14 @@ public class TelaUsuarios extends javax.swing.JFrame {
 
         txtId.setText("ID");
 
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,6 +204,10 @@ public class TelaUsuarios extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtId)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnIncluir)
@@ -146,21 +217,27 @@ public class TelaUsuarios extends javax.swing.JFrame {
                                 .addComponent(btnLimpar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExcluir))
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1)
-                                        .addComponent(txtNome)
-                                        .addComponent(jLabel3)
-                                        .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(txtConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(txtTelefone)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addComponent(txtConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -185,16 +262,21 @@ public class TelaUsuarios extends javax.swing.JFrame {
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                        .addGap(37, 37, 37)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnIncluir)
@@ -204,35 +286,31 @@ public class TelaUsuarios extends javax.swing.JFrame {
                         .addComponent(btnLimpar)))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        // INCLUI UM PALESTRANTE NA BASE DE DADOS
+        // INCLUI UM USUARIO NA BASE DE DADOS
         if(validarDados()){
             
-            objUsuario = new Usuario();
-            objUsuario.setNome(txtNome.getText());
-            objUsuario.setTelefone(txtTelefone.getText());
-            objUsuario.setUsuario(txtLogin.getText());
-            objUsuario.setSenha(txtSenha.getText());
-
+            guardarDados();
+            
+            //verificar se o usuário já existe
             objUsuarioController = new UsuarioController();
-                        
-            if(objUsuarioController.verificaExistencia((objUsuario.getUsuario()))){
-                CaixaDeDialogo.obterinstancia().exibirMensagem(" usuario ja cadastrado");
+            if (objUsuarioController.verificaExistencia(objUsuario)) {
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário já existe!", 'e');
             }else{
-                objUsuarioController = new UsuarioController();
-            if(objUsuarioController.incluir(objUsuario) == true){
-                atualizarLista();
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Usuario incluído com Sucesso ("+ objUsuario.getId() +")!");
-            }else{
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir usuario!");
+                if(objUsuarioController.incluir(objUsuario) == true){
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário incluído com Sucesso ("+ objUsuario.getId() +")!");
+                }else{
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir usuário!", 'e');
+                }
             }
-            }
+            
+            limparCampos();
 
         }
     }//GEN-LAST:event_btnIncluirActionPerformed
@@ -241,6 +319,23 @@ public class TelaUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             if(validarDados()){
+            
+                guardarDados();
+                objUsuario.setId(Integer.parseInt(txtId.getText()));
+
+                //verificar se o usuário já existe
+                objUsuarioController = new UsuarioController();
+                if (objUsuarioController.verificaExistencia(objUsuario)) {
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário já existe!", 'e');
+                }else{
+                    if(objUsuarioController.alterar(objUsuario) == true){
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário alterado com Sucesso ("+ objUsuario.getId() +")!");
+                    }else{
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar usuário!", 'e');
+                    }
+                }
+
+                limparCampos();
 
             }
 
@@ -253,10 +348,19 @@ public class TelaUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             boolean wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir?","",'p');
-
-            if (wPergunta == true){
+            
+            if(wPergunta == true){
+                objUsuarioController = new UsuarioController();
+                boolean retorno = objUsuarioController.excluir(Integer.parseInt(txtId.getText()));
+                if(retorno){
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário excluido com Sucesso");
+                    limparCampos(); 
+                }else{
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir usuário!");
+                }
 
             }
+            
 
         }catch(Exception ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
@@ -274,12 +378,9 @@ public class TelaUsuarios extends javax.swing.JFrame {
             //if(jtbUsuarios.isColumnSelected(2)){
                 UsuarioController objUsuarioController = new UsuarioController();
 
-                Usuario objUsuario = objUsuarioController.buscar(Integer.parseInt(idUsuario));
+                objUsuario = objUsuarioController.buscar(Integer.parseInt(idUsuario));
                 if (objUsuario != null && objUsuario.getId() > 0){
-                    txtId.setText(String.valueOf(objUsuario.getId()));
-                    txtNome.setText(objUsuario.getNome());
-                    txtLogin.setText(objUsuario.getUsuario());
-                    txtTelefone.setText(objUsuario.getTelefone());
+                    preencherCampos();
                 }else{
                     CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Usuário no BD!");
                 }
@@ -288,13 +389,17 @@ public class TelaUsuarios extends javax.swing.JFrame {
         }catch(Exception ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(), 'e');
         }
-
     }//GEN-LAST:event_jtbUsuariosMousePressed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
+        
+        limparCampos();
        
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     private boolean validarDados() {
         
@@ -313,8 +418,10 @@ public class TelaUsuarios extends javax.swing.JFrame {
         }else if (!txtSenha.getText().equals(txtConfirmacaoSenha.getText())) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("As senhas não correspondem", 'e');
             return false;
+        }else if (txtEmail.getText().equals("")) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o email do usuário", 'e');
+            return false;
         }
-        
         return true;
         
     }
@@ -365,13 +472,15 @@ public class TelaUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbUsuarios;
-    private javax.swing.JTextField txtConfirmacaoSenha;
+    private javax.swing.JPasswordField txtConfirmacaoSenha;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JLabel txtId;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

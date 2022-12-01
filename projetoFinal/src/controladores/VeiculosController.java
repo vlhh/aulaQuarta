@@ -12,61 +12,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import models.Usuario;
-//import model.Usuario;
+import models.Veiculo;
 
 /**
  *
- * @author jonas
+ * @author vitoria.schneider
  */
-public class UsuarioController {
+public class VeiculosController {
 
-    public boolean login(String user, String pass) {
+
+    public Veiculo buscar(int id) {
         try {
-            Conexao.abreConexao();
-            ResultSet rs = null;
-            PreparedStatement stmt;
-
-            String wSql = "";
-            wSql = " SELECT nome ";
-            wSql += " FROM usuarios ";
-            wSql += " WHERE usuario = ? ";
-            wSql += " AND senha = md5(?) ";
-
-            try {
-                System.out.println("Vai Executar Conexão em buscar Usuario");
-                stmt = Conexao.con.prepareStatement(wSql);
-                stmt.setString(1, user);
-                stmt.setString(2, pass);
-
-                rs = stmt.executeQuery();
-
-                return rs.next();
-
-            } catch (SQLException ex) {
-                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
-                return false;
-            }
-
-        } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage().toString());
-            return false;
-        }
-
-    }
-
-    public Usuario buscar(int id) {
-        try {
-            Usuario objUsuario = null;
+            Veiculo objVeiculo = null;
 
             Conexao.abreConexao();
             ResultSet rs = null;
@@ -85,15 +48,14 @@ public class UsuarioController {
                 rs = stmt.executeQuery();
 
                 if (rs.next()) {
-                    objUsuario = new Usuario();
-                    objUsuario.setId(rs.getInt("id"));
-                    objUsuario.setNome(rs.getString("nome"));
-                    objUsuario.setTelefone(rs.getString("telefone"));
-                    objUsuario.setUsuario(rs.getString("usuario"));
-                    objUsuario.setSenha(rs.getString("senha"));
-                    objUsuario.setEmail(rs.getString("email"));
+                    objVeiculo = new Veiculo();
+                    objVeiculo.setId(rs.getInt("id"));
+                    objVeiculo.setAno(rs.getString("ano"));
+                    objVeiculo.setModelo(rs.getString("modelo"));
+                    objVeiculo.setPlaca(rs.getString("placa"));
 
-                    return objUsuario;
+
+                    return objVeiculo;
                 }
 
             } catch (SQLException ex) {
@@ -110,24 +72,24 @@ public class UsuarioController {
 
     }
 
-    public boolean verificaExistencia(Usuario objUsuario) {
+    public boolean verificaExistencia(Veiculo objVeiculo) {
         try {
             Conexao.abreConexao();
             ResultSet rs = null;
             PreparedStatement stmt;
 
             String wSql = " SELECT * ";
-            wSql += " FROM usuarios ";
-            wSql += " WHERE usuario = ? ";
-            if(objUsuario.getId() > 0){
+            wSql += " FROM objVeiculo ";
+            wSql += " WHERE modelo = ? ";
+            if(objVeiculo.getId() > 0){
                 wSql += " AND id <> ? ";
             }
 
             System.out.println("Vai Executar Conexão em verificaExistencia Usuario");
             stmt = Conexao.con.prepareStatement(wSql);
-            stmt.setString(1, objUsuario.getUsuario());   
-            if(objUsuario.getId() > 0){
-                stmt.setInt(2, objUsuario.getId());   
+            stmt.setString(1, objVeiculo.getModelo());   
+            if(objVeiculo.getId() > 0){
+                stmt.setInt(2, objVeiculo.getId());   
             }
 
             rs = stmt.executeQuery();
@@ -148,19 +110,17 @@ public class UsuarioController {
 
     }
 
-    public boolean incluir(Usuario objUsuario) {
+    public boolean incluir(Veiculo objVeiculo) {
 
         try {
 
             Conexao.abreConexao();
             PreparedStatement stmt = null;
 
-            stmt = Conexao.con.prepareStatement("INSERT INTO usuarios (nome, usuario, senha, telefone, email) VALUES(?,?,md5(?),?,?)");
-            stmt.setString(1, objUsuario.getNome());
-            stmt.setString(2, objUsuario.getUsuario());
-            stmt.setString(3, objUsuario.getSenha());
-            stmt.setString(4, objUsuario.getTelefone());
-            stmt.setString(5, objUsuario.getEmail());
+            stmt = Conexao.con.prepareStatement("INSERT INTO veiculos (modelo, placa, ano, ) VALUES(?,?,?)");
+            stmt.setString(1, objVeiculo.getModelo());
+            stmt.setString(2, objVeiculo.getPlaca());
+            stmt.setString(3, objVeiculo.getAno());
 
             stmt.executeUpdate();
 
@@ -175,13 +135,13 @@ public class UsuarioController {
 
     }
 
-    public void preencherLista(JTable jtbUsuarios) {
+    public void preencherLista(JTable jtbVeiculos) {
 
         Vector<String> cabecalhos = new Vector<String>();
         Vector dadosTabela = new Vector();
         cabecalhos.add("Id");
-        cabecalhos.add("Nome");        
-        cabecalhos.add("Usuário");
+        cabecalhos.add("Modelo");        
+        cabecalhos.add("Placa");
 
 
         Conexao.abreConexao();
@@ -190,17 +150,17 @@ public class UsuarioController {
         try {
 
             String sql = "";
-            sql = "SELECT id, nome, usuario ";
-            sql += " FROM usuarios ";
-            sql += " ORDER BY nome ";
+            sql = "SELECT id, modelo, placa ";
+            sql += " FROM veiculos ";
+            sql += " ORDER BY modelo ";
 
             result = Conexao.stmt.executeQuery(sql);
 
             while (result.next()) {
                 Vector<Object> linha = new Vector<Object>();
                 linha.add(result.getInt("id"));
-                linha.add(result.getString("nome"));                
-                linha.add(result.getString("usuario"));
+                linha.add(result.getString("modelo"));                
+                linha.add(result.getString("placa"));
 
                 dadosTabela.add(linha);
             }
@@ -210,7 +170,7 @@ public class UsuarioController {
             System.out.println(e);
         }
 
-        jtbUsuarios.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
+        jtbVeiculos.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -220,12 +180,12 @@ public class UsuarioController {
         });
 
         // permite seleção de apenas uma linha da tabela
-        jtbUsuarios.setSelectionMode(0);
+        jtbVeiculos.setSelectionMode(0);
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
         for (int i = 0; i < 3; i++) {
-            column = jtbUsuarios.getColumnModel().getColumn(i);
+            column = jtbVeiculos.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
                     column.setPreferredWidth(80);
@@ -238,7 +198,7 @@ public class UsuarioController {
                     break;
             }
         }
-        jtbUsuarios.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        jtbVeiculos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -305,4 +265,5 @@ public class UsuarioController {
         }
         
     }
+    
 }
