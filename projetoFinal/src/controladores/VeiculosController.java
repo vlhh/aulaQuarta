@@ -116,7 +116,7 @@ public class VeiculosController {
             Conexao.abreConexao();
             PreparedStatement stmt = null;
 
-            stmt = Conexao.con.prepareStatement("INSERT INTO veiculos (modelo, placa, ano, ) VALUES(?,?,?)");
+            stmt = Conexao.con.prepareStatement("INSERT INTO veiculos (modelo, placa, ano) VALUES(?,?,?)");
             stmt.setString(1, objVeiculo.getModelo());
             stmt.setString(2, objVeiculo.getPlaca());
             stmt.setString(3, objVeiculo.getAno());
@@ -221,7 +221,7 @@ public class VeiculosController {
         PreparedStatement stmt = null;
         
         try {
-            stmt = Conexao.con.prepareStatement("UPDATE usuarios SET modeo=?, placa=?,ano=? WHERE id=? ");
+            stmt = Conexao.con.prepareStatement("UPDATE veiculos SET modelo=?, placa=?,ano=? WHERE id=? ");
             stmt.setString(1, objVeiculo.getModelo());
             stmt.setString(2, objVeiculo.getPlaca());
             stmt.setString(3, objVeiculo.getAno());

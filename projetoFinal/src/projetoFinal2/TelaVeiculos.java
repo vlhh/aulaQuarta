@@ -33,8 +33,8 @@ public class TelaVeiculos extends javax.swing.JFrame {
             
             txtId.setText(String.valueOf(objVeiculo.getId()));
             txtModelo.setText(objVeiculo.getModelo());
-            txtModelo.setText(objVeiculo.getPlaca());
-            txtModelo.setText(objVeiculo.getAno());
+            txtPlaca.setText(objVeiculo.getPlaca());
+            txtAno.setText(objVeiculo.getAno());
             
             btnIncluir.setEnabled(false);            
             btnAlterar.setEnabled(true);
@@ -51,8 +51,8 @@ public class TelaVeiculos extends javax.swing.JFrame {
             
             txtId.setText("ID");
             txtModelo.setText("");
-            txtModelo.setText("");
-            txtModelo.setText("");
+            txtPlaca.setText("");
+            txtAno.setText("");
             
             btnIncluir.setEnabled(true);            
             btnAlterar.setEnabled(false);
@@ -154,7 +154,7 @@ public class TelaVeiculos extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Cadastro de Usuários");
+        jLabel5.setText("Cadastro de Veiculos");
 
         jLabel1.setText("Modelo");
 
@@ -293,12 +293,12 @@ public class TelaVeiculos extends javax.swing.JFrame {
                 //verificar se o usuário já existe
                 objVeiculoController = new VeiculosController();
                 if (objVeiculoController.verificaExistencia(objVeiculo)) {
-                    CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário já existe!", 'e');
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Veiculo já existe!", 'e');
                 }else{
                     if(objVeiculoController.alterar(objVeiculo) == true){
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário alterado com Sucesso ("+ objVeiculo.getId() +")!");
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Veiculo alterado com Sucesso ("+ objVeiculo.getId() +")!");
                     }else{
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar usuário!", 'e');
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar veiculo!", 'e');
                     }
                 }
 
@@ -326,10 +326,10 @@ public class TelaVeiculos extends javax.swing.JFrame {
                 objVeiculoController = new VeiculosController();
                 boolean retorno = objVeiculoController.excluir(Integer.parseInt(txtId.getText()));
                 if(retorno){
-                    CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário excluido com Sucesso");
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Veiculo excluido com Sucesso");
                     limparCampos();
                 }else{
-                    CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir usuário!");
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao excluir veiculo!");
                 }
 
             }
@@ -346,13 +346,13 @@ public class TelaVeiculos extends javax.swing.JFrame {
     private boolean validarDados() {
         
         if (txtModelo.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o nome do usuário", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o modelo do veiculo", 'e');
             return false;
         }else if (txtPlaca.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o telefone do usuário", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe a placa do veiculo", 'e');
             return false;
         }else if (txtAno.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o login do usuário", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o ano do veiculo", 'e');
             return false;
         }
         return true;
